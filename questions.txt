@@ -30,3 +30,83 @@ and:
     D) Compilation failure
     E) Exception at runtime
 
+Q3)
+  class Y {
+    static String sayHi() { return "Y-Hello"; }
+    String sayHi2() { return "Y-Hello2"; }
+  }
+  class Z extends Y {
+    static String sayHi() {  return "Z-Hello"; }
+    String sayHi2() { return "Z-Hello2"; }
+  }
+
+    Y y = new Z();
+    System.out.println(y.sayHi() + ", " + y.sayHi2());
+
+    What is the result?
+    A) Y-Hello, Y-Hello2
+    B) Y-Hello, Z-Hello2
+    C) Z-Hello, Z-Hello2
+    D) Z-Hello, Y-Hello2
+    E) Compilation fails
+Q4)
+Given:
+class X {
+  int a = 99;
+  static void show() { // static methods DO NOT HAVE "this"
+    System.out.println("value of a is " + a);
+  }
+}
+and:
+X x = new X();
+x.show();
+
+What is the result?
+A) Runtime Exception
+B) Compilation fails
+C) value of a is 99
+D) value of a is null
+E) value of a is 0
+
+Q5)
+Given:
+class X {
+  public int doStuff(int x) {return 0;}
+  // line n1
+}
+
+Which, individually, would be valid at line n1
+A) int doStuff(int x) {return 0;} // NO accessibility is not part of identity
+B) public void doStuff(int x) {} // NO return type is not part of identity
+C) public int doStuff(int x, String s) {return 0;} // YES different method...
+D) public int doStuff(int other) {return 0;} // NO arg names are not part of identity
+
+Q6)
+given:
+class X {
+  void doStuff(int x, int y) {}
+  void doStuff(double x, double y) {} // line n1
+}
+and:
+X x = new x();
+x.doStuff(3, 4); // line n2
+x.doStuff(2, 3.14); // line n3
+
+which are true (select all...):
+A) Success..
+B) Runtime Failure
+C) Compile fails at line n1
+D) Compile fails at line n2
+E) Compile fails at line n3
+
+Q7)
+class Q22 {
+    public int getValue() {return 1;}
+}
+
+which of these methods may individually be added
+to a subclass of this class?
+    A) public int getValue(int x) {return 1;} // yes, not an override
+    B) public String getValue() {return "Hello";} // no, incompatible return type!
+    C) public String getValue(int x) {return "Hello";} // yes, not an override
+
