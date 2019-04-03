@@ -1,0 +1,32 @@
+Q1)
+Which is the output (choose one)
+A) P1Y14M465D
+B) P3Y7M10D
+C) P2Y2M465D
+D) RuntimeException
+
+Q2)
+Given:
+  class X {
+    static int MAX_VAL = 100;
+    int value = 99;
+    public void setVal(int x) {
+      if (x <= MAX_VAL) value = x; // implicitly this.value , X.MAX_VAL
+    }
+  }
+and:
+    X a = new X();
+    X b = new X();
+    a.setVal(120);
+    System.out.print(a.value + ", ");
+    b.MAX_VAL = 150;
+    a.setVal(140);
+    System.out.println(a.value);
+
+    What is the result?
+    A) 99, 99
+    B) 120, 140
+    C) 99, 140
+    D) Compilation failure
+    E) Exception at runtime
+
