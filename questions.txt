@@ -218,3 +218,41 @@ B) Compilation fails at line n2
 C) Compilation fails at line n3
 D) Exception from method at runtime if data.dat doesn't exist
 E) Completes normally if data.dat does exist
+
+Q14)
+  class Base {
+    void doBaseStuff() { System.out.println("doBaseStuff"); }
+  }
+  class Sub extends Base {
+    void doBaseStuff() { System.out.println("doSubStuff"); }
+    void doOtherStuff() {
+      System.out.println("doOtherStuff");
+    }
+  }
+
+    Base b = new Sub();
+    b.doOtherStuff();    
+
+    What is the result?
+    A) doSubStuff
+    B) doOtherStuff
+    C) doBaseStuff
+    D) Exception at runtime
+    E) Compilation failure // YES
+
+Q15)
+  class Base {
+    void doBaseStuff() { System.out.println("doBaseStuff"); }
+  }
+  class Sub {
+    void doBaseStuff() { System.out.println("doSubStuff"); }
+  }
+
+    Base b = (Base)new Sub();
+    b.doBaseStuff();    
+
+    What is the result?
+    A) doSubStuff
+    B) doBaseStuff
+    C) Exception at runtime
+    D) Compilation failure
