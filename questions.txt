@@ -256,3 +256,74 @@ Q15)
     B) doBaseStuff
     C) Exception at runtime
     D) Compilation failure
+
+Q16)
+Given:
+class Base { // line n3
+  public Base(int x) {
+    sout("Base constructor");
+  }
+}
+
+class Sub extends Base { // line n2
+}
+
+and:
+  new Sub(); // line n1
+
+What is the result?
+A) Compilation fails at n1
+B) Compilation fails at n2
+C) Compilation fails at n3
+D) Base constructor
+E) Runtime Exception
+
+Q17)
+Given:
+class Base { // line n2
+  public Base(int x) {
+    sout("Base constructor");
+  }
+}
+class Sub extends Base {
+  private int x; 
+  public Sub(int x) {
+    this.x = x; // line n1
+    super(x); 
+  }
+}
+and:
+  new Sub(99);
+
+What is the result?
+A) Compilation fails at n1
+B) Compilation fails at n2
+C) Base constructor
+D) Runtime Exception
+
+Q18)
+Given:
+class Base { // line n3
+  public Base(int x) {
+    sout("Base constructor");
+  }
+}
+class Sub extends Base { 
+  public Sub(int x) {
+    super(x); // line n4
+  }
+  public Sub() {
+    super(99);
+    this(99); // line n2
+  }
+}
+and:
+  new Sub(); // line n1
+
+What is the result?
+A) Compilation fails at n1
+B) Compilation fails at n2
+C) Compilation fails at n3
+D) Compilation fails at n4
+E) Base constructor
+
