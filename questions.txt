@@ -110,3 +110,111 @@ to a subclass of this class?
     B) public String getValue() {return "Hello";} // no, incompatible return type!
     C) public String getValue(int x) {return "Hello";} // yes, not an override
 
+Q8)
+class Base {
+    void doBaseStuff() {
+      System.out.println("doBaseStuff");
+    }
+  }
+  class Sub extends Base {
+//    @Override NOTE this was NOT part of the question (and it matters!)
+    void doBaseStuff() {
+      System.out.println("doSubStuff");
+    }
+    void doOtherStuff() {
+      System.out.println("doOtherStuff");
+    }
+  }
+Which are true:
+In the Base and Sub classes, which are true in isolation?
+    A) doBaseStuff in Base can be marked public without causing errors // NO
+    B) doBaseStuff in Base can be marked private without causing errors // YES
+    C) doBaseStuff in Sub can be marked public without causing errors // YES
+    D) doBaseStuff in Sub can be marked protected without causing errors // YES
+    E) doBaseStuff in Sub can be marked private without causing errors // NO
+
+Q9)
+class Base {
+    void doBaseStuff() {
+      System.out.println("doBaseStuff");
+    }
+  }
+  class Sub extends Base {
+    void doBaseStuff() {
+      System.out.println("doSubStuff");
+    }
+    void doOtherStuff() {
+      System.out.println("doOtherStuff");
+    }
+  }
+
+Which are true:
+In the Base and Sub classes, which are true in individually
+    A) doBaseStuff in Base can be marked throws Exception without causing errors // YES
+    B) doBaseStuff in Base can be marked throws RuntimeException without causing errors // YES
+    C) doBaseStuff in Sub can be marked throws Exception without causing errors // NO
+    D) doBaseStuff in Sub can be marked throws RuntimeException without causing errors
+    E) if doBaseStuff in Base were marked throws Exception, 
+       then doBaseStuff in Sub can be marked throws IOException without causing errors // YES
+Q10)
+Given:
+try {
+  if (Math.random() > -1) throw new IOException();
+  if (Math.random() > 0.5) throw new Exception();
+} catch (Exception e) {
+  sop("Got exception");
+} catch (IOException ioe) {
+  sop("Got IOE");
+}
+What is the result?
+A) Got exception
+B) Got IOE
+C) Got exception
+   Got IOE
+D) Runtime Exception
+E) Compilation fails
+
+Q11)
+Given:
+try {
+  if (Math.random() > 0.5) throw new IOException();
+}
+What is the result?
+A) Compilation fails
+B) Exception at runtime
+C) Method returns to caller cleanly
+
+Q12)
+Given:
+try {
+  sop("Before");
+  if (Math.random() > 0.5) throw new IOException();
+  sop("Success");
+} finally {
+  sop("finally");
+}
+sop("after");
+
+What is the result?
+A) Compilation fails
+B) Before
+C) Success
+D) finally
+E) after
+
+Q13)
+Given:
+public void doStuff() { // line n1
+       // resource(s) must be implementations of AutoCloseable
+       // must be newly declared variable and must be initialized, right here!
+  try (FileInputStream fis = new FileInputStream("data.dat")) { // line n2
+    if (Math.random() > 0.5) throw new IOException();
+  } // line n3
+// auto-generates finally block which closes those resouces
+}
+What is the result?
+A) Compilation fails at line n1
+B) Compilation fails at line n2
+C) Compilation fails at line n3
+D) Exception from method at runtime if data.dat doesn't exist
+E) Completes normally if data.dat does exist
