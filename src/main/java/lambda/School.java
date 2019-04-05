@@ -132,5 +132,7 @@ public class School {
     StudentCriterion crit = s -> s.getGpa() < 3;
     System.out.println("crit is " + crit.getClass().getName());
 
+    System.out.println("Medium-Smart students");
+    show(studentsByCriterion(ls, s -> s.getGpa() > 3 && s.getGpa() < 3.5 ));
   }
 }
