@@ -327,3 +327,30 @@ C) Compilation fails at n3
 D) Compilation fails at n4
 E) Base constructor
 
+Q19) How many times does the message "comparing" show up?
+A) Exactly once
+B) Exactly zero
+C) Many, not sure
+D) Exactly three
+
+Q20)
+Which are valid?
+A) Predicate<Student> p = Student s -> s.getGpa() > 2; // NO requires parens
+B) Object o = (s) -> s.getGpa() > 2; // NO requires context
+C) Predicate<Student> p = s -> s.getName(); // NO Wrong return type (String, should be boolean)
+D) Predicate<Student> p = s -> { s.getGpa() > 3; }; // NO requires "return"
+E) Predicate<Student> p = s -> s.getGpa() < 0; // YES!!!
+
+Q21)
+Given:
+interface Supplier {
+  String get();
+}
+Which are valid?
+A) Predicate<Student> p = (Student s) -> s.getGpa() == "Hello"; // NO can't == String/double
+B) Supplier sup = (s) -> s.getName(); // NO wrong argument list (should be zero args)
+C) Comparator<Student> c = (s, s1) -> s.getName().compareTo(s1.getName()); // YES
+D) Supplier supp = () -> { return "Hello"; };// YES
+D) Supplier supp = () -> "Hello" ; // YES (as expression)
+
+

@@ -2,6 +2,7 @@ package lambda;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 
 public class Ex3 {
@@ -16,9 +17,11 @@ public class Ex3 {
     ls.sort((a, b) -> b.getName().compareTo(a.getName()));
     ls.forEach(s -> System.out.println("> " + s));
     System.out.println("------------");
-    ls.sort((a, b) -> Double.compare(b.getGpa(), a.getGpa()));
+    ls.sort((a, b) -> {
+      System.out.println("comparing " + a + " with " + b);
+      return Double.compare(b.getGpa(), a.getGpa());
+    });
     ls.forEach(s -> System.out.println("> " + s));
     System.out.println("------------");
-
   }
 }
