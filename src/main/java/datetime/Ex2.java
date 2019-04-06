@@ -15,6 +15,5 @@ public class Ex2 {
     longer = longer.normalized();
     System.out.println("longer is " + longer);
 
-
   }
 }
